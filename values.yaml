@@ -977,7 +977,7 @@ dags:
 
       ## the git sync interval in seconds
       ##
-      refreshTime: 600
+      refreshTime: 60
 
   ## configs for the git-clone container
   ##
@@ -1330,18 +1330,18 @@ redis:
   ## - set to `false` if using an external redis database
   ## - set to `false` if `airflow.executor` is `KubernetesExecutor`
   ##
-  enabled: false
+  enabled: true
 
   ## the redis password
   ##
   ## WARNING:
   ## - you should NOT use this, instead specify `redis.existingSecret`
   ##
-  password: airflow
+  password: 911142066c047dbc8b413012a68da16d9fc4f9d9a8f6de43321a2bfd32ca406d
 
   ## the name of a pre-created secret containing the redis password
   ##
-  existingSecret: ""
+  existingSecret: all-secret
 
   ## the key within `redis.existingSecret` containing the password string
   ##
@@ -1449,7 +1449,7 @@ externalRedis:
 
   ## the database number to use within the the external redis
   ##
-  databaseNumber: 1
+  databaseNumber: 0
 
   ## the name of a pre-created secret containing the external redis password
   ##

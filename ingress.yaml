@@ -1,0 +1,17 @@
+ apiVersion: networking.k8s.io/v1beta1
+ kind: Ingress
+ metadata:
+   name: myingressresource
+ spec:
+   tls:
+   - hosts:
+     - cluster-helm-airflow-fdeea28e4a34dee3e8b3354a9cbfc9f5-0000.jp-tok.containers.appdomain.cloud
+     secretName: cluster-helm-airflow-fdeea28e4a34dee3e8b3354a9cbfc9f5-0000
+   rules:
+   - host: cluster-helm-airflow-fdeea28e4a34dee3e8b3354a9cbfc9f5-0000.jp-tok.containers.appdomain.cloud
+     http:
+       paths:
+       - path: /
+         backend:
+           serviceName: airflow-web
+           servicePort: 8080
