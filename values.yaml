@@ -138,6 +138,7 @@ airflow:
   ##
   extraPipPackages:
     - "apache-airflow[devel]"
+    - "lithops"
 
   ## extra volumeMounts for the web/scheduler/worker Pods
   ##
@@ -833,6 +834,8 @@ dags:
   ##
   path: /opt/airflow/dags
 
+  plugin: /opt/airflow/plugins
+
   ## whether to disable pickling dags from the scheduler to workers
   ##
   ## NOTE:
@@ -1029,6 +1032,8 @@ dags:
     ##   syncSubPath: "/subdirWithDags"
     ##
     syncSubPath: ""
+
+    pluginPath: "/plugins"
 
 ###################################
 # Kubernetes - Ingress Configs
@@ -1294,11 +1299,11 @@ externalDatabase:
 
   ## the host of the external database
   ##
-  host: 7119fafd-325f-49e5-b8be-b8bbf283441a.bqfh4fpt0vhjh7rs4ot0.databases.appdomain.cloud
+  host: e562cc6d-b58a-478c-b8e2-fc010985efa0.bqfh4fpt0vhjh7rs4ot0.databases.appdomain.cloud
 
   ## the port of the external database
   ##
-  port: 32425
+  port: 30487
 
   ## the database/scheme to use within the the external database
   ##
@@ -1306,7 +1311,7 @@ externalDatabase:
 
   ## the user of the external database
   ##
-  user: ibm_cloud_aa5080e6_2bbc_47d6_b221_5211e1375d21
+  user: ibm_cloud_b60f4f39_2ee3_424c_86e4_171488a226b6
 
   ## the name of a pre-created secret containing the external database password
   ##
@@ -1337,7 +1342,7 @@ redis:
   ## WARNING:
   ## - you should NOT use this, instead specify `redis.existingSecret`
   ##
-  password: 911142066c047dbc8b413012a68da16d9fc4f9d9a8f6de43321a2bfd32ca406d
+  password: password123
 
   ## the name of a pre-created secret containing the redis password
   ##

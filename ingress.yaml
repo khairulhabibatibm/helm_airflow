@@ -5,10 +5,10 @@
  spec:
    tls:
    - hosts:
-     - cluster-helm-airflow-fdeea28e4a34dee3e8b3354a9cbfc9f5-0000.jp-tok.containers.appdomain.cloud
-     secretName: cluster-helm-airflow-fdeea28e4a34dee3e8b3354a9cbfc9f5-0000
+     - iks-airflow-fdeea28e4a34dee3e8b3354a9cbfc9f5-0000.jp-tok.containers.appdomain.cloud
+     secretName: iks-airflow-fdeea28e4a34dee3e8b3354a9cbfc9f5-0000
    rules:
-   - host: cluster-helm-airflow-fdeea28e4a34dee3e8b3354a9cbfc9f5-0000.jp-tok.containers.appdomain.cloud
+   - host: iks-airflow-fdeea28e4a34dee3e8b3354a9cbfc9f5-0000.jp-tok.containers.appdomain.cloud
      http:
        paths:
        - path: /

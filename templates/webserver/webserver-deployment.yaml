@@ -107,6 +107,24 @@ spec:
             - name: git-clone-secret
               mountPath: /keys
             {{- end }}
+        - name: lithops-plugin
+          image: {{ .Values.dags.initContainer.image.repository }}:{{ .Values.dags.initContainer.image.tag }}
+          imagePullPolicy: {{ .Values.dags.initContainer.image.pullPolicy }}
+          resources:
+            {{- toYaml .Values.dags.initContainer.resources | nindent 12 }}
+          command:
+            - /home/airflow/git/lithops-plugin.sh
+          args:
+            - "{{ .Values.dags.git.url }}"
+            - "{{ .Values.dags.git.ref }}"
+            - "{{ .Values.dags.initContainer.pluginPath }}"
+            - "{{ .Values.dags.git.repoHost }}"
+            - "{{ .Values.dags.git.repoPort }}"
+            - "{{ .Values.dags.git.privateKeyName }}"
+          volumeMounts:
+            - name: lithops-plugin
+              mountPath: "{{ .Values.dags.initContainer.pluginPath }}"
+
       {{- end }}
       containers:
         {{- if and ( .Values.dags.git.gitSync.enabled ) ( not .Values.web.serializeDAGs ) }}
@@ -176,6 +194,8 @@ spec:
             - name: dags-data
               mountPath: {{ .Values.dags.path }}
             {{- end }}
+            - name: lithops-plugin
+              mountPath: {{ .Values.dags.plugin }}
             {{- if .Values.logs.persistence.enabled }}
             - name: logs-data
               mountPath: {{ .Values.logs.path }}
@@ -283,6 +303,8 @@ spec:
         - name: dags-data
           emptyDir: {}
         {{- end }}
+        - name: lithops-plugin
+          emptyDir: {}
         {{- if .Values.logs.persistence.enabled }}
         - name: logs-data
           persistentVolumeClaim:
