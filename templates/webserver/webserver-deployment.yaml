@@ -122,6 +122,8 @@ spec:
             - "{{ .Values.dags.git.repoPort }}"
             - "{{ .Values.dags.git.privateKeyName }}"
           volumeMounts:
+            - name: git-clone
+              mountPath: /home/airflow/git
             - name: lithops-plugin
               mountPath: "{{ .Values.dags.initContainer.pluginPath }}"
 

@@ -79,7 +79,8 @@ airflow:
   ##     ## Proxy Config
   ##     HTTP_PROXY: "http://proxy.example.com:8080"
   ##
-  config: {}
+  config:
+    AIRFLOW__WEBSERVER__RELOAD_ON_PLUGIN_CHANGE: "True"
 
   ## extra annotations for the web/scheduler/worker Pods
   ##
@@ -1299,11 +1300,11 @@ externalDatabase:
 
   ## the host of the external database
   ##
-  host: e562cc6d-b58a-478c-b8e2-fc010985efa0.bqfh4fpt0vhjh7rs4ot0.databases.appdomain.cloud
+  host: 06e3b243-9766-443a-9129-471a53455cf7.bqfh4fpt0vhjh7rs4ot0.databases.appdomain.cloud
 
   ## the port of the external database
   ##
-  port: 30487
+  port: 32737
 
   ## the database/scheme to use within the the external database
   ##
@@ -1311,7 +1312,7 @@ externalDatabase:
 
   ## the user of the external database
   ##
-  user: ibm_cloud_b60f4f39_2ee3_424c_86e4_171488a226b6
+  user: ibm_cloud_feca1373_10f4_4866_89af_6335cfb3ba0e
 
   ## the name of a pre-created secret containing the external database password
   ##

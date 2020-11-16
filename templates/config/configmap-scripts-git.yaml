@@ -78,8 +78,6 @@ data:
   lithops-plugin.sh: |
     #!/bin/sh -e
 
-    mkdir /home/airflow/plugins
-
     # ensure the git directory is empty, so we can safely clone
     if [ -d "$DIR" ]; then
       rm -rf $( find $DIR -mindepth 1 )
@@ -88,4 +86,4 @@ data:
     git clone https://github.com/lithops-cloud/airflow-plugin.git
     cd airflow-plugin
 
-    cp -r lithops_airflow_plugin /home/airflow/plugins
+    cp -r lithops_airflow_plugin /plugins
